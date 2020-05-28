@@ -1,0 +1,15 @@
+{
+    "name": "proyecto-final",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "concurrently \"cd backend && php artisan serve \"  \"cd frontend && ng serve --open \""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "currently": "0.0.8"
+    }
+}

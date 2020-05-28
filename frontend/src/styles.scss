@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+.button.is-primary {
+    background-color: rgb(58, 61, 129);
+    color: #fff;
+    &:hover {
+        background-color: rgb(77, 80, 145);
+    }
+}
+
+.navbar-link:not(.is-arrowless)::after {
+    border-color: rgb(58, 61, 129);
+}
+
+navbar-link.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+a.navbar-item.is-active,
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover {
+    background-color: #fafafa;
+    color: rgb(58, 61, 129);
+}

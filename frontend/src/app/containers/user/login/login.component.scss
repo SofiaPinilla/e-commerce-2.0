@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1em;
+    margin: 1em;
+    img {
+        border-radius: 1em;
+        width: 35vw;
+    }
+    .login {
+        margin: 1em;
+        padding: 2em;
+    }
+    min-height: 70vh;
+    .title {
+        padding: 0.7em;
+    }
+}

@@ -1,0 +1,47 @@
+<section class="container">
+    <div class="imagenRegistro">
+        <img src="assets/images/prueba3.jpg">
+    </div>
+    <div class="registro">
+        <form on-submit="register(registerForm)" #registerForm="ngForm">
+            <p class="title is-2 is-spaced">Create your account.</p>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input name="name" class="input" type="text" placeholder="Text input" required>
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input name="email" class="input" type="text" placeholder="Text input" required email ngModel>
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input name="password" class="input" type="password" placeholder="Text input" required>
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Submit</button>
+                </div>
+            </div>
+            <p class="lead mt-4">If you already have an account <a [routerLink]="['/login']" routerLinkActive="router-link-active">Log in</a></p>
+        </form>
+    </div>
+
+</section>

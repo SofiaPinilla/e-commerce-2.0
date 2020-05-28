@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1em;
+    margin: 1em;
+    img {
+        border-radius: 1em;
+        width: 35vw;
+    }
+    .registro {
+        margin: 1em;
+        padding: 5em;
+    }
+    min-height: 70vh;
+}
