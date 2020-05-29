@@ -31,12 +31,20 @@ Route::prefix('users')->group(function () {
 
 Route::prefix('products')->group(function () {
     Route::get('/', 'ProductController@getAll');
-
+    Route::get('/id/{id}', 'ProductController@getById');
+    Route::post('/', 'ProductController@insert');
       Route::middleware('auth:api')->group(function (){
-        Route::post('/', 'ProductController@insert');
         Route::put('/{id}', 'ProductController@update');
         Route::delete('/{id}', 'ProductController@delete');
         });
+});
+Route::prefix('reviews')->group(function () {
+  Route::get('/', 'ReviewController@getAll');
+  Route::middleware('auth:api')->group(function (){
+    Route::post('/{id}', 'ReviewController@insert');
+      Route::put('/{id}', 'ReviewController@update');
+      Route::delete('/{id}', 'ReviewController@delete');
+      });
 });
 Route::prefix('categories')->group(function () {
     Route::get('/', 'CategoryController@getAll');
@@ -45,6 +53,7 @@ Route::prefix('categories')->group(function () {
 });
 Route::prefix('orders')->group(function () {
   Route::get('/', 'OrderController@getAll');
+  Route::middleware('auth:api')->group(function (){
   Route::post('/', 'OrderController@insert');
-   
+});
 });

@@ -4,19 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
-
+use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     public function getAll()
     {
-        $orders = Order::with('products')->get();
-        return response($orders, 201);
+        try {
+            $orders = Order::with(['products.categories','user'])->get();
+            return response($orders);
+        } catch (\Exception $e) {
+           return response($e,500);
+        }
     }
     public function insert(Request $request)
     {
-        $body = $request->all();//req.body
-        // dump($body);//dump() y dd() son de laravel, var_dump() de php, dd() corta el flujo
-        $order = Order::create($body);
-        return response($order, 201);
+try {
+    $body = $request->validate([
+        'deliveryDate'=>'required|date',
+        'products'=> 'required|array',
+    ]);
+    $body['status']='pending';
+    $body['user_id'] = Auth::id();
+    dd($body);
+    $products=$body['products'];
+    unset($body['products']);
+    $order= Order::create($body);
+    $order->products()->attach($products);
+    return response($order,201);
+} catch (\Exception $e) {
+    return response($e,500);
+}
     }
 }

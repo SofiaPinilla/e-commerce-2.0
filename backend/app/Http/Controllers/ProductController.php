@@ -9,8 +9,15 @@ class ProductController extends Controller
 {
     public function getAll()
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('review','category')->get();
         return response($products, 201);
+    }
+    public function getById($id)
+    {
+        $product = Product::find($id);
+        $category_name = $product->category->name;
+        $completeProduct = [$product, $category_name];
+        return response($completeProduct, 201);
     }
     public function insert(Request $request)
     {
