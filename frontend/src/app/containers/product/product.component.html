@@ -7,33 +7,33 @@
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div> -->
-<p>{{product |json}}</p>
-<div *ngFor="let product of productService.product">
-    <div class="productoDetail " class="content is-medium">
-        <div>
+<div>
 
-            <img src="{{product.image_path}}" alt="Image">
+    <div class="content is-medium">
 
-        </div>
+
+        <img src="{{productService.product.image_path}}" alt="Image">
+
+
         <div class="datosProducto">
-            <h1>{{product.name}}</h1>
-            <p>Description: {{product.description}}</p>
-            <p>Price: {{product.price}} €</p>
-            <p>Category: {{product[0].name}} </p>
+            <h1>{{productService.product.name}}</h1>
+            <p>Description: {{productService.product.description}}</p>
+            <p>Price: {{productService.product.price}} €</p>
+            <p>Category: {{productService.product.name}} </p>
 
-            <button class="button is-info">Normal</button>
+            <button class="button is-info">  <i class="fas fa-shopping-cart"></i>  Add to cart</button>
         </div>
 
     </div>
+    <p class="subtitle is-3">Reviews</p>
+    <div>
+        <div class="reviews" *ngFor="let review of productService.product?.review">
+            <p>
 
+                {{review.review}}
+            </p>
 
-</div>
-<div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <p class="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
-        </p>
+        </div>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
+
 </div>

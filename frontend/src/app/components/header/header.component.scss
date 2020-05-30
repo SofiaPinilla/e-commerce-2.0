@@ -1,3 +1,23 @@
 .navbar {
     padding: 0.8em;
 }
+
+.input {
+    width: 35vw;
+}
+
+.user {
+    color: rgb(58, 61, 129);
+    display: inline-block;
+}
+
+.flex {
+    display: flex;
+    svg:not(:root).svg-inline--fa {
+        margin: 0.3em;
+    }
+}
+
+svg {
+    color: rgb(58, 61, 129);
+}

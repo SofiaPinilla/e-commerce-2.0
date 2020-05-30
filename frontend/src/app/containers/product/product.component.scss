@@ -4,7 +4,22 @@
     display: flex;
     justify-content: space-around;
     img {
-        border-radius: 2em;
-        max-width: 35%;
+        margin: 1em;
+        border-radius: 0.5em;
+        max-width: 40%;
     }
+}
+
+.subtitle {
+    text-align: center;
+}
+
+.reviews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.svg-inline--fa.fa-w-18 {
+    margin: 0.3em;
 }

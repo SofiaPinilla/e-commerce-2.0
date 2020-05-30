@@ -19,7 +19,7 @@ export class UserService {
   getUserInfo(token: string): Observable<any> {
     return this.httpClient.get('http://localhost:8000/api/users/info',{
       headers:{
-        authorization:token
+        authorization: 'Bearer '+ localStorage.getItem('authToken')
       }
     });
   }

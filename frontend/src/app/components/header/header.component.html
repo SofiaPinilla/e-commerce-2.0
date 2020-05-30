@@ -38,18 +38,37 @@
             </div>
         </div>
         <div class="buscadorNav navbar">
-            <input class="input is-rounded" type="text" placeholder="Search a product...">
+            <p class="control has-icons-left has-icons-right">
+                <input class="input is-rounded" type="text" placeholder="Search a product...">
+                <span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+          </span>
+            </p>
         </div>
         <div class="navbar-end">
             <div class="navbar-item" *ngIf="userService.user as user">
-                <div class="buttons">
-                    <a class="button is-primary" [routerLink]="['register']">
-                        <strong>{{user.name}}</strong>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <div class="flex">
+
+                            <i class="fas fa-user"></i>
+                            <p>{{user.name}}</p>
+                        </div>
                     </a>
-                    <a class="button is-light" [routerLink]="['login']" (click)="logout()">
-              Logout
-            </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" [routerLink]="['profile']">
+                 Profile
+                </a>
+                        <a class="navbar-item" [routerLink]="['login']" (click)="logout()">
+                            Logout
+                </a>
+
+                    </div>
                 </div>
+
+                <i class="fas fa-shopping-cart"></i>
+
             </div>
         </div>
         <div class="navbar-end">
