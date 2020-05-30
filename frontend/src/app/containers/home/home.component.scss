@@ -3,7 +3,7 @@
     justify-content: center;
     margin: 1em;
     img {
-        width: 80%;
+        width: 100%;
         border-radius: 1em;
     }
     .texto {
@@ -20,5 +20,28 @@
     .input,
     .textarea {
         margin-top: 3em;
+        opacity: 0.7;
     }
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    .card {
+        margin: 1em;
+        min-width: 25%;
+        max-width: 25%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.title {
+    text-align: center;
+}
+
+.title:not(.is-spaced)+.subtitle {
+    text-align: center;
 }

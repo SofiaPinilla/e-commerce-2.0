@@ -1,0 +1,39 @@
+<!-- <div class="modal ">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <p class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+        </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div> -->
+<p>{{product |json}}</p>
+<div *ngFor="let product of productService.product">
+    <div class="productoDetail " class="content is-medium">
+        <div>
+
+            <img src="{{product.image_path}}" alt="Image">
+
+        </div>
+        <div class="datosProducto">
+            <h1>{{product.name}}</h1>
+            <p>Description: {{product.description}}</p>
+            <p>Price: {{product.price}} €</p>
+            <p>Category: {{product[0].name}} </p>
+
+            <button class="button is-info">Normal</button>
+        </div>
+
+    </div>
+
+
+</div>
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <p class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+        </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>

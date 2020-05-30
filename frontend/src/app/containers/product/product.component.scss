@@ -1,0 +1,10 @@
+.content {
+    margin: 1em;
+    padding: 1em;
+    display: flex;
+    justify-content: space-around;
+    img {
+        border-radius: 2em;
+        max-width: 35%;
+    }
+}

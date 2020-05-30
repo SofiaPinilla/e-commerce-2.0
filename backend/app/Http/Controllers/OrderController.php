@@ -25,7 +25,6 @@ try {
     ]);
     $body['status']='pending';
     $body['user_id'] = Auth::id();
-    dd($body);
     $products=$body['products'];
     unset($body['products']);
     $order= Order::create($body);

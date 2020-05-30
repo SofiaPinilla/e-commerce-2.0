@@ -16,7 +16,8 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $category_name = $product->category->name;
-        $completeProduct = [$product, $category_name];
+        $review = $product->review[0]->review;
+        $completeProduct = [$product, $category_name,$review];
         return response($completeProduct, 201);
     }
     public function insert(Request $request)
