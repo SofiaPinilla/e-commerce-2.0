@@ -8,6 +8,7 @@ class Review extends Model
 {
     protected $fillable = [
         'review',
+        'image_path',
         'product_id',
         'user_id'
     ];

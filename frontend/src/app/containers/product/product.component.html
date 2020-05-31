@@ -8,11 +8,10 @@
     <button class="modal-close is-large" aria-label="close"></button>
 </div> -->
 <div>
-
     <div class="content is-medium">
 
 
-        <img src="{{productService.product.image_path}}" alt="Image">
+        <img src="http://localhost:8000/images/products/{{productService.product.image_path}}" alt="Image">
 
 
         <div class="datosProducto">
@@ -26,12 +25,38 @@
 
     </div>
     <p class="subtitle is-3">Reviews</p>
-    <div>
-        <div class="reviews" *ngFor="let review of productService.product?.review">
-            <p>
+    <div class="flex2">
+        <form #reviewForm="ngForm">
+            <div class="comment">
+                <textarea [(ngModel)]="textValue" #review="ngModel" class="textarea" placeholder="e.g. Hello world"></textarea>
+                <div class="file">
+                    <button on-click="postReview(imageInput)" class="button is-info">  Send</button>
+                    <label class="file-label">
+                  <input #imageInput class="file-input" type="file" name="resume">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choose a file…
+                    </span>
+                  </span>
+                </label>
+                </div>
+            </div>
+        </form>
+        <div>
+        </div>
 
-                {{review.review}}
-            </p>
+        <div class="reviews" *ngFor="let review of productService.product?.review">
+            <p>{{review.user.name}}</p>
+            <div class="flex">
+                <p> {{review.created_at | date }}</p>
+                <p>{{review.review}}</p>
+            </div>
+
+            <img src="http://localhost:8000/images/products/{{review.image_path}}" alt="Image">
+
 
         </div>
     </div>

@@ -20,7 +20,6 @@ class Product extends Migration
             $table->float('price',8,2);
             $table->string('image_path')->nullable();
             $table->integer('category_id');
-            $table->integer('review_id');
             $table->timestamps();
         });
     }

@@ -16,8 +16,12 @@ class ReviewController extends Controller
     public function insert(Request $request, $id)
     {
         try {
-            $body = $request->all(); 
-            
+            $body = $request->validate([
+                'review' => 'required|string'
+            ]);
+            $imageName = time() . '-' . request()->img->getClientOriginalName(); //time() es como Date.now()
+            request()->img->move('images/products', $imageName); //mueve el archivo subido al directorio indicado (en este caso public path es dentro de la carpeta public)
+            $body['image_path'] = $imageName;
             $body['product_id'] = $id;
             $body['user_id'] = Auth::id();
             $review = Review::create($body);
