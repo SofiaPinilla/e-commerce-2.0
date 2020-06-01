@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   public user:object;
+  public token: string = "";
   constructor(public httpClient: HttpClient) { }
   setUser(user){
     this.user=user;
@@ -26,11 +27,14 @@ export class UserService {
   getCurrentUser(){
       return this.user;
   }
-  // logout(token: string){
-  //   return this.httpClient.get('http://localhost:8000/api/users/logout',{
-  //     headers: {
-  //       authorization: token
-  //     }
-  //   });
-  // }
+  logout(token: string){
+    return this.httpClient.get('http://localhost:8000/api/users/logout',{
+      headers: {
+        authorization: token
+      }
+    });
+  }
+  setToken(token: string): void {
+    this.token = token;
+  }
 }

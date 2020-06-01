@@ -11,14 +11,14 @@
     <div class="content is-medium">
 
 
-        <img src="http://localhost:8000/images/products/{{productService.product.image_path}}" alt="Image">
+        <img src="http://localhost:8000/images/products/{{productService.product?.image_path}}" alt="Image">
 
 
         <div class="datosProducto">
-            <h1>{{productService.product.name}}</h1>
-            <p>Description: {{productService.product.description}}</p>
-            <p>Price: {{productService.product.price}} €</p>
-            <p>Category: {{productService.product.name}} </p>
+            <h1>{{productService.product?.name}}</h1>
+            <p>Description: {{productService.product?.description}}</p>
+            <p>Price: {{productService.product?.price}} €</p>
+            <p>Category: {{productService.product?.name}} </p>
 
             <button class="button is-info">  <i class="fas fa-shopping-cart"></i>  Add to cart</button>
         </div>
@@ -26,13 +26,13 @@
     </div>
     <p class="subtitle is-3">Reviews</p>
     <div class="flex2">
-        <form #reviewForm="ngForm">
+        <form #reviewForm="ngForm" (submit)="postReview(reviewForm.form,imageInput)">
             <div class="comment">
-                <textarea [(ngModel)]="textValue" #review="ngModel" class="textarea" placeholder="e.g. Hello world"></textarea>
+                <textarea name="review" ngModel class="textarea" placeholder="hey" required></textarea>
                 <div class="file">
-                    <button on-click="postReview(imageInput)" class="button is-info">  Send</button>
+                    <button class="button is-info" type="submit">  Send</button>
                     <label class="file-label">
-                  <input #imageInput class="file-input" type="file" name="resume">
+                  <input name="image" ngModel #imageInput class="file-input" type="file" required  >
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="fas fa-upload"></i>
@@ -48,9 +48,12 @@
         <div>
         </div>
 
-        <div class="reviews" *ngFor="let review of productService.product?.review">
-            <p>{{review.user.name}}</p>
+        <div class="reviews" *ngFor="let review of productService.product?.review.reverse()">
             <div class="flex">
+                <p>{{review.user.name}}</p>
+                <div>
+
+                </div>
                 <p> {{review.created_at | date }}</p>
                 <p>{{review.review}}</p>
             </div>

@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -19,15 +20,15 @@ export class ProductComponent implements OnInit {
     this.productService.getProductId(id)
       .subscribe(product => {
         this.productService.product = product
-        console.log(product)
       })
   }
 
-  postReview(imageInput) { // comentar
+  postReview(reviewForm,imageInput) { // comentar
     const id = this.route.snapshot.params.id;
     const reviewFormData = new FormData();
-    if (this.textValue) reviewFormData.set('review', this.textValue);
+    if (reviewForm.value.review) reviewFormData.set('review', reviewForm.value.review);
     if (imageInput.files[0]) reviewFormData.set('img', imageInput.files[0]);
+    
     this.productService.postReview(reviewFormData, id)
       .subscribe((res: HttpResponse<any>) => {
         imageInput.value = '';
@@ -38,7 +39,10 @@ export class ProductComponent implements OnInit {
         this.productService.review = {
           review: ''
         }
-        
+        this.productService.getProductId(id)
+      .subscribe(product => {
+        this.productService.product = product
+      })
 
         err => console.error(err);
       })

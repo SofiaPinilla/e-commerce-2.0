@@ -11,6 +11,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './containers/user/register/register.component';
 import { ProfileComponent } from './containers/profile/profile.component';
 import { ProductComponent } from './containers/product/product.component';
+import { ProductsComponent } from './containers/products/products.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ProductComponent } from './containers/product/product.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ProductComponent
+    ProductComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

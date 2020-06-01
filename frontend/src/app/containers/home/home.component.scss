@@ -28,13 +28,14 @@
     display: flex;
     justify-content: center;
     margin: 1em;
-    .card {
-        margin: 1em;
-        min-width: 25%;
-        max-width: 25%;
-        &:hover {
-            cursor: pointer;
-        }
+}
+
+.card {
+    margin: 1em;
+    min-width: 35%;
+    width: 20vw;
+    &:hover {
+        cursor: pointer;
     }
 }
 

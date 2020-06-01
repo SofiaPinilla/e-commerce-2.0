@@ -24,7 +24,7 @@ export class ProductService {
 
     return this.httpClient.post(`http://localhost:8000/api/reviews/${id}`, review, {
       headers: {
-        authorization: localStorage.getItem('authToken') || ''
+        authorization: 'Bearer '+ localStorage.getItem('authToken') || ''
       }
 
 

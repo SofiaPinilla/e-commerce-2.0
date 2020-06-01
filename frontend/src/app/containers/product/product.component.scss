@@ -16,13 +16,16 @@
 
 .reviews {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     img {
-        width: 25%;
+        width: 40%;
         border-radius: 0.5em;
     }
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid rgba(143, 143, 143, 0.452);
+    width: 45vw;
 }
 
 .svg-inline--fa.fa-w-18 {
@@ -31,9 +34,15 @@
 
 .flex {
     display: flex;
+    flex-direction: column;
+    margin: 1em;
+    justify-content: space-around;
+    width: 10vw;
+    height: 20vh;
 }
 
 .flex2 {
+    margin: 1em;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -41,6 +50,7 @@
 }
 
 .comment {
+    margin: 1em;
     width: 35vw;
     .button {
         margin: 1em;
