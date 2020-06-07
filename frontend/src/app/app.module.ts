@@ -16,6 +16,7 @@ import { SearchComponent } from './containers/search/search.component';
 import { CartComponent } from './containers/cart/cart.component';
 import { OrdersComponent } from './containers/profile/orders/orders.component';
 import { WishListComponent } from './containers/profile/wish-list/wish-list.component';
+import { AdminComponent } from './containers/admin/admin.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { WishListComponent } from './containers/profile/wish-list/wish-list.comp
     SearchComponent,
     CartComponent,
     OrdersComponent,
-    WishListComponent
+    WishListComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

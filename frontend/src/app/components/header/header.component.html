@@ -67,17 +67,17 @@
                     </div>
                 </div>
 
-                <div class="columns">
+                <div class="carrito" [routerLink]="['cart']">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <p class="myBadge">{{cartService.productsInCart.length}}</p>
+                <!-- <div class="columns">
 
                     <div class="column">
                         <span class="has-badge-rounded has-badge-danger has-badge-large" data-badge="72">
-                            <p>{{cartService.productsInCart.length}}</p>
-                            <div class="carrito" [routerLink]="['cart']">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
                         </span>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

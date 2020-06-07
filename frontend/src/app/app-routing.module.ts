@@ -10,6 +10,7 @@ import { SearchComponent } from './containers/search/search.component';
 import { CartComponent } from './containers/cart/cart.component';
 import { OrdersComponent } from './containers/profile/orders/orders.component';
 import { WishListComponent } from './containers/profile/wish-list/wish-list.component';
+import { AdminComponent } from './containers/admin/admin.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'cart', component: CartComponent},
   {path:'myorders', component: OrdersComponent},
   {path:'wishlist', component: WishListComponent},
+  {path:'admin', component: AdminComponent},
   {path: 'search/:search', component: SearchComponent}
 ];
 

@@ -43,6 +43,13 @@ export class ProductService {
 
     });
   }
+  postProduct(product: FormData): Observable<any> {
+    return this.httpClient.post(`http://localhost:8000/api/products`, product, {
+      headers: {
+        authorization: 'Bearer '+ localStorage.getItem('authToken') || ''
+      }
+    });
+  }
   addLike( id:any): Observable<any> {
     return this.httpClient.post(`http://localhost:8000/api/products/likes/${id}`,{}, {
       headers: {
