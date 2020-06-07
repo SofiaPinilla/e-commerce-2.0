@@ -3,15 +3,14 @@
     <img src="assets/images/prueba6.jpg">
     <div class="texto">
         <h1>Create your ideal workspace!</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
-
-        <input class="input is-rounded" type="text" placeholder="Start buying">
+        <p>You can find computers, computer accessories, consoles and video games. </p>
+        <button class="button is-primary" [routerLink]="['products']">Start buying!</button>
     </div>
 </div>
 <h1 class="title is-1">New arrivals</h1>
 
 <div class="products">
-    <div *ngFor="let product of productService.products">
+    <div *ngFor="let product of productService.products2">
         <div class="card" routerLink="/product/{{product['id']}}">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -20,14 +19,11 @@
             </div>
             <div class="card-content">
                 <div class="media">
-
                     <div class="media-content">
                         <p class="title is-4">{{product.name}}</p>
                         <p class="subtitle is-6">{{product.price}} €</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

@@ -15,16 +15,16 @@ class CategorySeeder extends Seeder
         {
             DB::table('categories')->insert([
                 [
-                    'name' => 'Ordenadores',
+                    'name' => 'Computers',
                 ],
                 [
-                    'name' => 'Periféricos',
+                    'name' => 'Computer accessories',
                 ],
                 [
-                    'name' => 'Consolas',
+                    'name' => 'Consoles',
                 ],
                 [
-                    'name' => 'Juegos',
+                    'name' => 'Video game',
                 ]
             ]);
           } 

@@ -1,2 +1,23 @@
-<!-- <p>{{userService.user.name}}</p>
-<p>{{userService.user.email}}</p> -->
+<nav class="panel">
+    <p class="panel-heading">
+        My info
+    </p>
+    <p class="panel-tabs">
+        <a class="is-active">Data</a>
+        <a [routerLink]="['/myorders']" routerLinkActive="router-link-active">Orders</a>
+        <a [routerLink]="['/wishlist']" routerLinkActive="router-link-active"> <i class="fas fa-heart" aria-hidden="true"></i> Wish List</a>
+    </p>
+    <div class="data">
+
+        <a class="panel-block">
+
+            <p>Name: {{userService.user?.name}}</p>
+        </a>
+        <a class="panel-block">
+            <p>Email: {{userService.user?.email}}</p>
+        </a>
+        <a class="panel-block">
+            <p>Nº Orders: {{userService.user?.orders.length }}</p>
+        </a>
+    </div>
+</nav>

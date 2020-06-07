@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use App\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 class OrderController extends Controller
 {
     public function getAll()
@@ -20,7 +23,6 @@ class OrderController extends Controller
     {
 try {
     $body = $request->validate([
-        'deliveryDate'=>'required|date',
         'products'=> 'required|array',
     ]);
     $body['status']='pending';
@@ -29,6 +31,7 @@ try {
     unset($body['products']);
     $order= Order::create($body);
     $order->products()->attach($products);
+    Mail::to($order->user->email)->send(new OrderShipped($order));
     return response($order,201);
 } catch (\Exception $e) {
     return response($e,500);

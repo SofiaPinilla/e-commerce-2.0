@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  public user:object;
+  public user:any;
   public token: string = "";
   constructor(public httpClient: HttpClient) { }
   setUser(user){

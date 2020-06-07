@@ -11,7 +11,7 @@ export class ProfileComponent implements OnInit {
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
-    const token: string = 'Bearer '+ localStorage.getItem('authToken')
+    const token = 'Bearer '+ localStorage.getItem('authToken')
     this.userService.getUserInfo(token)
       .subscribe((res => {
         this.userService.user = res

@@ -1,5 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-
+@charset "utf-8";
+// Import Bulma core
+@import 'bulma';
+// Import component
+@import "bulma-badge";
 .button.is-primary {
     background-color: rgb(58, 61, 129);
     color: #fff;

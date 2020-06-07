@@ -31,12 +31,21 @@ Route::prefix('users')->group(function () {
 
 Route::prefix('products')->group(function () {
     Route::get('/', 'ProductController@getAll');
+    Route::get('/8', 'ProductController@getLimitProducts');
+    Route::get('/price', 'ProductController@getByPrice');
+    Route::get('/price2', 'ProductController@getByPrice2');
     Route::get('/id/{id}', 'ProductController@getById');
+    Route::get('/name/{search}', 'ProductController@getProductByName');
     Route::post('/', 'ProductController@insert');
-      Route::middleware('auth:api')->group(function (){
-        Route::put('/{id}', 'ProductController@update');
+    Route::middleware('auth:api')->group(function (){
+      Route::post('/likes/{id}', 'ProductController@addProductLike');
+      Route::delete('/unlike/{id}', 'ProductController@deleteProductLike');
+    });
+    Route::middleware(['auth:api','checkRole:admin'])->group(function (){
+      Route::post('/', 'ProductController@insert');
+      Route::put('/{id}', 'ProductController@update');
         Route::delete('/{id}', 'ProductController@delete');
-        });
+      });
 });
 Route::prefix('reviews')->group(function () {
   Route::get('/', 'ReviewController@getAll');
@@ -48,6 +57,7 @@ Route::prefix('reviews')->group(function () {
 });
 Route::prefix('categories')->group(function () {
     Route::get('/', 'CategoryController@getAll');
+    Route::get('/name/{search}', 'CategoryController@getCategoryByName');
     Route::post('/', 'CategoryController@insert');
      
 });
@@ -57,3 +67,6 @@ Route::prefix('orders')->group(function () {
   Route::post('/', 'OrderController@insert');
 });
 });
+
+Route::get('stripe', 'StripePaymentController@stripe');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');

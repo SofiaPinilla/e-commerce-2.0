@@ -39,10 +39,10 @@
         </div>
         <div class="buscadorNav navbar">
             <p class="control has-icons-left has-icons-right">
-                <input class="input is-rounded" type="text" placeholder="Search a product...">
+                <input class="input is-rounded" (keyup)="search($event)" type="text" placeholder="Search a product...">
                 <span class="icon is-small is-left">
             <i class="fas fa-search"></i>
-          </span>
+        </span>
             </p>
         </div>
         <div class="navbar-end">
@@ -66,9 +66,17 @@
 
                     </div>
                 </div>
-                <div class="carrito">
 
-                    <i class="fas fa-shopping-cart"></i>
+                <div class="columns">
+
+                    <div class="column">
+                        <span class="has-badge-rounded has-badge-danger has-badge-large" data-badge="72">
+                            <p>{{cartService.productsInCart.length}}</p>
+                            <div class="carrito" [routerLink]="['cart']">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </span>
+                    </div>
                 </div>
 
             </div>

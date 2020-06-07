@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +15,7 @@ import { NgForm } from '@angular/forms';
 export class ProductComponent implements OnInit {
   inputValue: string | null;
   textValue
-  constructor(public productService:ProductService, public route: ActivatedRoute, public location: Location) { }
+  constructor(public productService:ProductService,public userService: UserService, public route: ActivatedRoute, public location: Location,public cartService: CartService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id
@@ -22,7 +24,11 @@ export class ProductComponent implements OnInit {
         this.productService.product = product
       })
   }
-
+  addCart(product) {
+    if (this.cartService.productsInCart.find((p)=>p.id==product?.id))return;
+    this.cartService.productsInCart.push(product);
+    localStorage.setItem('cart', JSON.stringify(this.cartService.productsInCart))
+  }
   postReview(reviewForm,imageInput) { // comentar
     const id = this.route.snapshot.params.id;
     const reviewFormData = new FormData();
@@ -46,6 +52,39 @@ export class ProductComponent implements OnInit {
 
         err => console.error(err);
       })
+
+  }
+  addLike() {
+    const id = this.route.snapshot.params.id;
+    this.productService.addLike(id)
+      .subscribe(
+        res => {
+          this.productService.product = res
+          this.productService.getProductId(id)
+          .subscribe(product => {
+            this.productService.product = product
+          })
+        },
+        error => console.error(error)
+      )
+
+  }
+  mapLikeToIds (like){
+    return like.id;
+  }
+  unLike() {
+    const id = this.route.snapshot.params.id;
+    this.productService.deleteLike(id)
+      .subscribe(
+        res => {
+          this.productService.product = res
+          this.productService.getProductId(id)
+          .subscribe(product => {
+            this.productService.product = product
+          })
+        },
+        error => console.error(error)
+      )
 
   }
 }

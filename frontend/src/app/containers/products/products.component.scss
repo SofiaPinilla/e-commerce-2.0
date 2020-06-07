@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1em;
+}
+
+.card {
+    margin: 1em;
+    padding: 1em;
+    min-width: 35%;
+    width: 16vw;
+    max-height: 40vh;
+    min-height: 40vh;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.menu {
+    min-width: 15vw;
+}
+
+.products {
+    width: 85;
+}
+
+.title {
+    text-align: center;
+}
+
+.title:not(.is-spaced)+.subtitle {
+    text-align: center;
+}
+
+input {
+    all: unset;
+    cursor: pointer;
+}

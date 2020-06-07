@@ -1,0 +1,18 @@
+.panel-block {
+    justify-content: space-around;
+    img {
+        width: 10%;
+    }
+    input {
+        margin: 1em;
+    }
+}
+
+.panel.is-primary .panel-heading {
+    background-color: rgb(58, 61, 129);
+    color: #fff;
+}
+
+.desaparecer {
+    all: unset;
+}

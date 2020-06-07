@@ -59,3 +59,36 @@
         margin: 1em;
     }
 }
+
+.datosProducto {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.button.is-info {
+    margin: 1em;
+    min-width: 15vw;
+    max-width: 20vw;
+}
+
+.button.is-danger {
+    margin: 1em;
+    min-width: 15vw;
+    max-width: 20vw;
+    .fa-heart {
+        margin: 0.3em;
+    }
+}
+
+.botones {
+    display: flex;
+    justify-content: space-around;
+}
+
+.deseos {
+    .fa-heart {
+        color: #F03A5F;
+    }
+}

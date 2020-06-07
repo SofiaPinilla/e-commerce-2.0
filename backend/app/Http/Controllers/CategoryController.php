@@ -18,4 +18,10 @@ class CategoryController extends Controller
         $category = Category::create($body);
         return response($category, 201);
     }
+    public function getCategoryByName($search)
+    {              
+        $category = Category::with('products');                             
+        $filter = $category->where('name','LIKE','%'.$search.'%')->get();
+        return $filter;
+    }
 }

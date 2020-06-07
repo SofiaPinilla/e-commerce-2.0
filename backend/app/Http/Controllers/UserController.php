@@ -41,7 +41,7 @@ class UserController extends Controller
     public function getUserInfo(Request $request)
     {
         $user = Auth::user();//req.user
-        // $request->user();
-        return $user;
+
+        return $user->load('orders.products','likes');
     }
 }

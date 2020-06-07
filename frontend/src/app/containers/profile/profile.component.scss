@@ -1,0 +1,11 @@
+.data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+    p {
+        min-width: 20vw;
+        max-width: 20vw;
+    }
+}

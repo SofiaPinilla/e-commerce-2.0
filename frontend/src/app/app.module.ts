@@ -12,6 +12,10 @@ import { RegisterComponent } from './containers/user/register/register.component
 import { ProfileComponent } from './containers/profile/profile.component';
 import { ProductComponent } from './containers/product/product.component';
 import { ProductsComponent } from './containers/products/products.component';
+import { SearchComponent } from './containers/search/search.component';
+import { CartComponent } from './containers/cart/cart.component';
+import { OrdersComponent } from './containers/profile/orders/orders.component';
+import { WishListComponent } from './containers/profile/wish-list/wish-list.component';
 
 
 @NgModule({
@@ -24,7 +28,11 @@ import { ProductsComponent } from './containers/products/products.component';
     RegisterComponent,
     ProfileComponent,
     ProductComponent,
-    ProductsComponent
+    ProductsComponent,
+    SearchComponent,
+    CartComponent,
+    OrdersComponent,
+    WishListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<nav class="panel">
+
+    <p class="panel-heading">
+        My info
+    </p>
+    <p class="panel-tabs">
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active">Data</a>
+        <a class="is-active">Orders</a>
+        <a [routerLink]="['/wishlist']" routerLinkActive="router-link-active"> <i class="fas fa-heart" aria-hidden="true"></i> Wish List</a>
+    </p>
+    <!-- {{userService.user?.orders | json}} -->
+    <a class="panel-block" *ngFor="let order of userService.user.orders">
+        <span class="panel-icon">
+            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+        </span>
+        <th>Status:
+        </th>
+        <p>{{order.status}}</p>
+        <th>DeliveryDate: </th>
+        <p>{{order.deliveryDate |date}}</p>
+        <th class="productos"> Products:</th>
+        <p class="productos" *ngFor="let product of order.products">
+            {{product.name}} : {{product.price}} € Units:{{product.pivot.units}}
+        </p>
+        <th>Total: {{order.products?.reduce(sumTotal,0)}}€</th>
+    </a>
+</nav>

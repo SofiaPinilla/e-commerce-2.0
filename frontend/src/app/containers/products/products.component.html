@@ -1,34 +1,59 @@
-<aside class="menu">
-    <p class="menu-label">
-        General
-    </p>
-    <ul class="menu-list">
-        <li><a>Dashboard</a></li>
-        <li><a>Customers</a></li>
-    </ul>
-    <p class="menu-label">
-        Administration
-    </p>
-    <ul class="menu-list">
-        <li><a>Team Settings</a></li>
-        <li>
-            <a class="is-active">Manage Your Team</a>
-            <ul>
-                <li><a>Members</a></li>
-                <li><a>Plugins</a></li>
-                <li><a>Add a member</a></li>
-            </ul>
-        </li>
-        <li><a>Invitations</a></li>
-        <li><a>Cloud Storage Environment Settings</a></li>
-        <li><a>Authentication</a></li>
-    </ul>
-    <p class="menu-label">
-        Transactions
-    </p>
-    <ul class="menu-list">
-        <li><a>Payments</a></li>
-        <li><a>Transfers</a></li>
-        <li><a>Balance</a></li>
-    </ul>
-</aside>
+<section class="container">
+    <aside class="menu">
+        <p class="menu-label">
+            <input value="Products" type="submit" on-click="getProducts()">
+        </p>
+        <ul class="menu-list">
+            <li>
+                <a><input value="Price: cheaper to more expensive" type="submit" on-click="getByPrice()"></a>
+            </li>
+            <li>
+                <a><input value="Price: expensive to more cheaper" type="submit" on-click="getByPrice2()"></a>
+            </li>
+        </ul>
+        <ul class="menu-list">
+            <li><a>Categories</a></li>
+            <li>
+                <ul>
+                    <li><a name="Computers" #Computers on-click="getCategoryByName('Computers')">Computers</a></li>
+                    <li><a name="Computer accessories" on-click="getCategoryByName('Computer accessories')">Computer accessories </a></li>
+                    <li><a name="Consoles" on-click="getCategoryByName('Consoles')">Consoles</a></li>
+                    <li><a name="Video game" on-click="getCategoryByName('Video game')">Video games</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- <li><a>Invitations</a></li>
+            <li><a>Cloud Storage Environment Settings</a></li>
+            <li><a>Authentication</a></li>
+        <p class="menu-label">
+            Transactions
+        </p>
+        <ul class="menu-list">
+            <li><a>Payments</a></li>
+            <li><a>Transfers</a></li>
+            <li><a>Balance</a></li>
+        </ul> -->
+    </aside>
+    <div class="products">
+        <div *ngFor="let product of productService.products">
+            <div class="card" routerLink="/product/{{product['id']}}">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="http://localhost:8000/images/products/{{product.image_path}}" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+
+                        <div class="media-content">
+                            <p class="title is-4">{{product.name}}</p>
+                            <p class="subtitle is-6">{{product.price}} €</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

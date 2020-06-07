@@ -5,6 +5,7 @@
     img {
         width: 100%;
         border-radius: 1em;
+        opacity: 0.9;
     }
     .texto {
         color: white;
@@ -17,23 +18,28 @@
             font-size: 1.5em;
         }
     }
-    .input,
-    .textarea {
+    .button {
         margin-top: 3em;
-        opacity: 0.7;
+        border-radius: 2em;
+        width: 10vw;
+        height: 6vh;
     }
 }
 
 .products {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 1em;
 }
 
 .card {
     margin: 1em;
+    padding: 1em;
     min-width: 35%;
-    width: 20vw;
+    width: 16vw;
+    max-height: 40vh;
+    min-height: 40vh;
     &:hover {
         cursor: pointer;
     }
@@ -45,4 +51,8 @@
 
 .title:not(.is-spaced)+.subtitle {
     text-align: center;
+}
+
+.button.is-primary {
+    opacity: 0.8;
 }

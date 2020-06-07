@@ -25,4 +25,8 @@ class Product extends Model
     {
        return $this->hasMany('\App\Review');
     }
+    public function likes()
+    {
+       return $this->belongsToMany('\App\User', 'wish_lists');
+    }
 }

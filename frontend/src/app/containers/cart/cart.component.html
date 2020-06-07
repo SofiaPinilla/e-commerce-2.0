@@ -1,0 +1,26 @@
+<div>
+    <nav class="panel is-primary">
+        <form (submit)="insertOrder($event)">
+            <p class="panel-heading">
+                Cart
+            </p>
+            <a class="panel-block" *ngFor="let product of this.cartService.productsInCart">
+                <img src="http://localhost:8000/images/products/{{product.image_path}}" alt="Placeholder image"> {{product.name}}
+                <p>Price: {{product.price}} €</p>
+                <div>
+                    <label>Quantity </label>
+                    <input class="input is-rounded" min="0" value=1 type="number" id="{{product.id}}" (change)="changeUnits($event,product)" />
+                </div>
+                <button class="desaparecer" (click)="deleteProduct(product.id, $event)">
+
+                    <i  class="fas fa-trash"></i>
+                </button>
+            </a>
+            <div class="panel-block">
+                <button type="submit" class="button is-link is-outlined is-fullwidth">
+           Buy
+          </button>
+            </div>
+        </form>
+    </nav>
+</div>
