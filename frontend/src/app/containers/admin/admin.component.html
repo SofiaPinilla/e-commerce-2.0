@@ -45,4 +45,93 @@
             </div>
         </div>
     </form>
-    <div>
+    <!-- modal -->
+
+    <!-- modal -->
+    <nav class="panel">
+        <p class="panel-heading">
+            Repositories
+        </p>
+        <div class="panel-block">
+            <p class="control has-icons-left">
+                <input class="input" type="text" placeholder="Search">
+                <span class="icon is-left">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </span>
+            </p>
+        </div>
+        <p class="panel-tabs">
+            <a class="is-active">All</a>
+            <a>Public</a>
+            <a>Private</a>
+            <a>Sources</a>
+            <a>Forks</a>
+        </p>
+        <a class="panel-block" *ngFor="let product of productService.products">
+            <img src="http://localhost:8000/images/products/{{product.image_path}}" alt="Placeholder image" routerLink="/product/{{product['id']}}">
+            <div class="modal is-active" *ngIf="showModal" (onClose)="showModal=false">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Choose</p>
+                        <button class="delete" aria-label="close" (click)="cancel()"></button>
+                    </header>
+                    <section class="modal-card-body">
+
+                        <form class="forms" #productForm="ngForm" (submit)="editProduct(productForm.form, product.id)">
+                            <div class="comment">
+                                <div class="field">
+                                    <div class="control">
+                                        <input name="name" class="input is-medium" ngModel type="text" placeholder="Medium input">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <input name="price" class="input is-medium" ngModel type="number" placeholder="Medium input">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <input name="description" class="input is-medium" ngModel type="text" placeholder="Medium input">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select is-medium">
+                                            <select name="category_id" ngModel>
+                                          <option value="1">Computer</option>
+                                          <option value="2">Computer accessories</option>
+                                          <option value="3">Consoles</option>
+                                          <option value="4">Video games</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="file">
+                                    <button class="button is-info" type="submit">  Send</button>
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-success">Save changes</button>
+                        <button class="button" (click)="cancel()">Cancel</button>
+                    </footer>
+                </div>
+            </div>
+            <span class="panel-icon">{{product.name}} 
+            </span>
+            <button class="button is-primary" (click)="selectItem(product)">Edit</button>
+        </a>
+
+        <div class="panel-block">
+            <button class="button is-link is-outlined is-fullwidth">
+                Reset all filters
+              </button>
+        </div>
+    </nav>
+
+    <!-- <app-modal *ngIf="showModal" (onClose)="showModal=false"></app-modal> -->
+</div>

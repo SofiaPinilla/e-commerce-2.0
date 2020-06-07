@@ -1,6 +1,5 @@
 .data {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 1em;
@@ -8,4 +7,5 @@
         min-width: 20vw;
         max-width: 20vw;
     }
+    min-height: 54vh;
 }

@@ -17,6 +17,8 @@ import { CartComponent } from './containers/cart/cart.component';
 import { OrdersComponent } from './containers/profile/orders/orders.component';
 import { WishListComponent } from './containers/profile/wish-list/wish-list.component';
 import { AdminComponent } from './containers/admin/admin.component';
+import { ModalComponent } from './containers/admin/modal/modal.component';
+import { NotFoundComponent } from './containers/not-found/not-found.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { AdminComponent } from './containers/admin/admin.component';
     CartComponent,
     OrdersComponent,
     WishListComponent,
-    AdminComponent
+    AdminComponent,
+    ModalComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

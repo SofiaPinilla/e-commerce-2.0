@@ -1,9 +1,20 @@
 .flex2 {
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .form {
     width: 50vw;
+}
+
+.panel-block {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    img {
+        width: 10%;
+    }
 }

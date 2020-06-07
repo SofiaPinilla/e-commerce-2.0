@@ -71,4 +71,11 @@ export class ProductService {
   setProduct(product) {
     this.product = product;
   }
+  editProduct(product: FormData,id): Observable<any> {
+    return this.httpClient.put(`http://localhost:8000/api/products/${id}`,product, {
+      headers: {
+        authorization: 'Bearer '+ localStorage.getItem('authToken') || ''
+      }
+    });
+  }
 }

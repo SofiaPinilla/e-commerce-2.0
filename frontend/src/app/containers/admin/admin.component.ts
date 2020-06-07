@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { HttpResponse } from '@angular/common/http';
 
@@ -8,10 +8,15 @@ import { HttpResponse } from '@angular/common/http';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
+  showModal: boolean = false;
+  @Output()
+  onClose = new EventEmitter();
   constructor(public productService: ProductService) { }
-
   ngOnInit(): void {
+    this.productService.getAll()
+    .subscribe(res => {
+      this.productService.products = res
+    })
   }
   postProduct(productForm,imageInput) { // comentar
     const productFormData = new FormData();
@@ -22,20 +27,26 @@ export class AdminComponent implements OnInit {
     if (imageInput.files[0]) productFormData.set('img', imageInput.files[0]);
     
     this.productService.postProduct(productFormData)
-      .subscribe((res: HttpResponse<any>) => {
-        imageInput.value = '';
-        this.productService.setProduct(this.productService.product)
-        imageInput.value = '';
-        this.productService.product = {
-          product: ''
-        }
-        this.productService.getAll()
-        .subscribe(res => {
-          this.productService.products = res
+    .subscribe((res: HttpResponse<any>) => {
+      imageInput.value = '';
+      this.productService.setProduct(this.productService.product)
+      imageInput.value = '';
+      this.productService.product = {
+        product: ''
+      }
+      this.productService.getAll()
+      .subscribe(res => {
+        this.productService.products = res
       })
-
-        err => console.error(err);
-      })
-
+      
+      err => console.error(err);
+    })
+    
   }
+  selectItem(product) {
+    this.showModal = true;
+  }
+  cancel() { this.onClose.emit(null); }
+
+ 
 }
