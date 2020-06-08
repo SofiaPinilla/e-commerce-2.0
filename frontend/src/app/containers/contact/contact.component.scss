@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    form {
+        margin: 1em;
+        width: 100%;
+    }
+    min-height: 65vh;
+}
+
+.bd-example {
+    margin: 1em;
+    padding: 1em;
+    width: 75vw;
+}

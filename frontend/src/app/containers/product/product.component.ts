@@ -15,6 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ProductComponent implements OnInit {
   inputValue: string | null;
   textValue
+  imgSrc:string |ArrayBuffer;
   constructor(public productService:ProductService,public userService: UserService, public route: ActivatedRoute, public location: Location,public cartService: CartService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,16 @@ export class ProductComponent implements OnInit {
         this.productService.product = product
       })
   }
+  readURL(event: any): void {
+    if (event.target?.files[0]) {
+        const file = event.target.files[0]; 
+
+        const reader = new FileReader();
+        reader.onload = e => this.imgSrc = reader.result;
+
+        reader.readAsDataURL(file);
+    }
+}
   addCart(product) {
     if (this.cartService.productsInCart.find((p)=>p.id==product?.id))return;
     this.cartService.productsInCart.push(product);
@@ -52,7 +63,7 @@ export class ProductComponent implements OnInit {
 
         err => console.error(err);
       })
-
+      reviewForm.reset();
   }
   addLike() {
     const id = this.route.snapshot.params.id;

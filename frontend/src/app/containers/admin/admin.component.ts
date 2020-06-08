@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { HttpResponse } from '@angular/common/http';
-
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -9,6 +8,8 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class AdminComponent implements OnInit {
   showModal: boolean = false;
+  public message: string;
+  public messageUpdated:string;
   @Output()
   onClose = new EventEmitter();
   currentProduct: object;
@@ -19,31 +20,7 @@ export class AdminComponent implements OnInit {
         this.productService.products = res
       })
   }
-  postProduct(productForm, imageInput) { // comentar
-    const productFormData = new FormData();
-    if (productForm.value.name) productFormData.set('name', productForm.value.name);
-    if (productForm.value.price) productFormData.set('price', productForm.value.price);
-    if (productForm.value.description) productFormData.set('description', productForm.value.description);
-    if (productForm.value.category_id) productFormData.set('category_id', productForm.value.category_id);
-    if (imageInput.files[0]) productFormData.set('img', imageInput.files[0]);
-
-    this.productService.postProduct(productFormData)
-      .subscribe((res: HttpResponse<any>) => {
-        imageInput.value = '';
-        this.productService.setProduct(this.productService.product)
-        imageInput.value = '';
-        this.productService.product = {
-          product: ''
-        }
-        this.productService.getAll()
-          .subscribe(res => {
-            this.productService.products = res
-          })
-
-        err => console.error(err);
-      })
-
-  }
+  
   editProduct(productForm) { // comentar
     const product = productForm.value
     this.productService.editProduct(product, this.currentProduct['id'])
@@ -52,6 +29,8 @@ export class AdminComponent implements OnInit {
         this.productService.product = {
           product: ''
         }
+        this.messageUpdated = 'product succesfully updated';
+        setTimeout(() => this.messageUpdated = "", 2500);
         this.productService.getAll()
           .subscribe(res => {
             this.productService.products = res
@@ -65,5 +44,31 @@ export class AdminComponent implements OnInit {
   }
   cancel() { this.onClose.emit(null); }
 
-
+  deleteProduct(productId) {
+    this.productService.delete(productId)
+      .subscribe(res => {
+        this.message = 'product succesfully  deleted';
+        setTimeout(() => this.message = "", 2500);
+        this.productService.getAll()
+        .subscribe(res => {
+          this.productService.products = res
+        })
+       
+      },
+        error => {
+          console.log(error);
+        }
+      )
+  }
+  search(event) {
+   
+    this.productService.searchProduct(event.target.value)
+    .subscribe(
+      (res: HttpResponse<any>)  =>{
+        this.productService.products = res
+      } ,
+      
+      (error: HttpErrorResponse) => console.error(error)
+      );
+}
 }

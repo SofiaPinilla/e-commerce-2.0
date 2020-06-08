@@ -26,13 +26,18 @@
     </div>
     <p class="subtitle is-3">Reviews</p>
     <div class="flex2">
+
         <form #reviewForm="ngForm" (submit)="postReview(reviewForm.form,imageInput)">
             <div class="comment">
                 <textarea name="review" ngModel class="textarea" placeholder="Write a review" required></textarea>
+                <div class="prevPhoto">
+
+                    <img [src]="imgSrc" alt="">
+                </div>
                 <div class="file">
                     <button class="button is-info" type="submit">  Send</button>
                     <label class="file-label">
-                  <input name="image" ngModel #imageInput class="file-input" type="file" required  >
+                  <input name="image" ngModel #imageInput  (change)="readURL($event)" class="file-input" type="file" required  >
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="fas fa-upload"></i>
@@ -43,6 +48,7 @@
                   </span>
                 </label>
                 </div>
+
             </div>
         </form>
         <div>
@@ -58,7 +64,7 @@
                 <p>{{review.review}}</p>
             </div>
 
-            <img *ngIf="review.image_path" src="http://localhost:8000/images/productService.products/{{review.image_path}}" alt="review image">
+            <img *ngIf="review.image_path" src="http://localhost:8000/images/products/{{review.image_path}}" alt="review image">
 
 
         </div>

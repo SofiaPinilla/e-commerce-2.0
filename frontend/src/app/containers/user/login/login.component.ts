@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+public message:string
+public errorMsg:string
   constructor(public userService:UserService,public router:Router) { }
 
   ngOnInit(): void {
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          // this.message = res.message;
+          this.message= "Connected successfully";
+          setTimeout(() => this.message="", 2500);
           this.userService.setUser(res.user);
           this.userService.setToken(res['token']);
           localStorage.setItem('authToken',res.token);
@@ -35,10 +37,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['profile'])
           }, 2500);
         },
-        // err => {
-        //   this.errorMsg = err.error.message
-        //   setTimeout(() => this.errorMsg = "", 2500);
-        // }
+        err => {
+          this.errorMsg = "Incorrect user or password"
+          setTimeout(() => this.errorMsg = "", 2500);
+        }
       )
     event.target.reset();
   }

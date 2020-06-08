@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//routes contact
+Route::post('contact-us','ContactUsController@contactUsPost');
 //rutas user
 Route::prefix('users')->group(function () {
     Route::post('/register', 'UserController@register');
@@ -70,3 +71,4 @@ Route::prefix('orders')->group(function () {
 
 Route::get('stripe', 'StripePaymentController@stripe');
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+

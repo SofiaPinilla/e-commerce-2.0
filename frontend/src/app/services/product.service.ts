@@ -78,4 +78,11 @@ export class ProductService {
       }
     });
   }
+  delete(id: number): Observable<any> {
+    return this.httpClient.delete('http://localhost:8000/api/products/' + id,  {
+      headers: {
+        authorization: 'Bearer '+ localStorage.getItem('authToken') || ''
+      }
+    });
+  }
 }

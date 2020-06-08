@@ -5,6 +5,9 @@
     <div class="registro">
         <form on-submit="register(registerForm)" #registerForm="ngForm">
             <p class="title is-2 is-spaced">Create your account.</p>
+            <div class="notification is-link is-light" *ngIf="message">
+                {{message}}
+            </div>
             <div class="field">
                 <label class="label">Name</label>
                 <div class="control has-icons-left has-icons-right">

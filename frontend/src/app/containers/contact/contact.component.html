@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="bd-example">
+        <div class="content is-medium">
+            <h1>Contact Us</h1>
+            <p>TecnoShop is here to provide you with more information, answer, any questions you may have and create and effective solution for your instructional needs.</p>
+            <p>Please complete the form, so we can provide quick and efficient service. If this is an urgent matter please contact customer support. </p>
+            <th>TecnoShop S. A. 28006 Valencia Valencia CIF:B-4567894X TELF:964 456 789</th>
+        </div>
+    </div>
+    <form on-submit="contact(contactForm)" #contactForm="ngForm">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input class="input" name="name" type="text" ngModel placeholder="Text input">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input " type="email" placeholder="Email input" name="email" ngModel value="hello@">
+                <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="Textarea" name="message" ngModel></textarea>
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

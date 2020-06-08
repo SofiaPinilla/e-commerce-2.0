@@ -21,6 +21,7 @@
     "@angular/router": "~9.0.7",
     "bulma": "^0.8.2",
     "bulma-badge": "^3.0.1",
+    "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

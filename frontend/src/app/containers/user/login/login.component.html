@@ -5,6 +5,12 @@
     <div class="login">
         <form on-submit="login($event)">
             <p class="title is-2 is-spaced">Sign in to TecnoShop.</p>
+            <div class="notification is-link is-light" *ngIf="message">
+                {{message}}
+            </div>
+            <div class="notification is-danger is-light" *ngIf="errorMsg">
+                {{errorMsg}}
+            </div>
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
                     <input class="input" name="name" type="text" placeholder="your name">

@@ -92,3 +92,12 @@
         color: #F03A5F;
     }
 }
+
+.prevPhoto {
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    img {
+        width: 50%;
+    }
+}

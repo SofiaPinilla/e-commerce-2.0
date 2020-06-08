@@ -27,10 +27,10 @@
           </a>
 
                 <div class="navbar-dropdown">
-                    <a class="navbar-item">
+                    <a class="navbar-item" [routerLink]="['about']">
               About
             </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" [routerLink]="['contact']">
               Contact
             </a>
 
@@ -45,12 +45,13 @@
         </span>
             </p>
         </div>
-        <!-- <a class="navbar-item" [routerLink]="['admin']">
-            Admin
-          </a> -->
+
         <div class="navbar-end">
             <div class="navbar-item" *ngIf="userService.user as user">
                 <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-item" [routerLink]="['admin']" *ngIf="user['role']=='admin'">
+                        Admin
+                      </a>
                     <a class="navbar-link">
                         <div class="flex">
 

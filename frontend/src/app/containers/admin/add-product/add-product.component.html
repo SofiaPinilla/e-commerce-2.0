@@ -1,0 +1,78 @@
+<nav class="panel">
+    <p class="panel-heading">
+        Admin
+    </p>
+    <div class="panel-block">
+        <p class="control has-icons-left">
+            <input class="input" (keyup)="search($event)" type="text" placeholder="Search">
+            <span class="icon is-left">
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+        </p>
+    </div>
+    <p class="panel-tabs">
+        <a [routerLink]="['/admin']">All Products</a>
+        <a class="is-active">Create Product</a>
+    </p>
+
+    <a class="panel-block">
+        <div class="container">
+            <form class="forms" #productForm="ngForm" (submit)="postProduct(productForm.form,imageInput)">
+                <div class="notification is-link is-light" *ngIf="message">
+                    {{message}}
+                </div>
+
+                <div class="comment">
+                    <div class="field">
+                        <div class="control">
+                            <input name="name" class="input is-medium" ngModel type="text" placeholder="Medium input" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input name="price" class="input is-medium" ngModel type="number" placeholder="Medium input" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input name="description" class="input is-medium" ngModel type="text" placeholder="Medium input" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-medium">
+                                <select name="category_id" ngModel>
+                                    <option value="1">Computer</option>
+                                    <option value="2">Computer accessories</option>
+                                    <option value="3">Consoles</option>
+                                    <option value="4">Video games</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file">
+                        <button class="button is-info" type="submit"> Send</button>
+                        <label class="file-label">
+                            <input name="image" (change)="readURL($event)" ngModel #imageInput class="file-input" type="file" required>
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                    Choose a file…
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+            </form>
+            <div class="prevPhoto">
+
+                <img [src]="imgSrc" alt="">
+            </div>
+        </div>
+
+    </a>
+
+</nav>

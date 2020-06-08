@@ -11,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  admins = ['admin'];
   constructor(public userService:UserService,public route:Router, public productService: ProductService,public cartService: CartService) { }
 
   ngOnInit(): void {

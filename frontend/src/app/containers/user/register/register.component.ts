@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+public message:string
   constructor(public userService:UserService,public router:Router) { }
 
   ngOnInit(): void {
@@ -23,8 +23,8 @@ export class RegisterComponent implements OnInit {
     .subscribe(
       res=>{
         console.log(res);
-        // this.message=res.message;
-        // setTimeout(() => this.message="", 2500);
+        this.message= "Successfully registered";
+        setTimeout(() => this.message="", 2500);
         setTimeout(() => {
           this.router.navigate(['login'])
         }, 2500);

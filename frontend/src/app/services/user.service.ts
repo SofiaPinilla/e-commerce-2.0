@@ -37,4 +37,7 @@ export class UserService {
   setToken(token: string): void {
     this.token = token;
   }
+  getUser(): object {
+    return this.user;
+  }
 }

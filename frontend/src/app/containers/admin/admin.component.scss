@@ -18,3 +18,26 @@
         width: 10%;
     }
 }
+
+.panel {
+    width: 100%;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.notification {
+    text-align: center;
+}
+
+.desaparecer {
+    all: unset;
+    padding: 1em;
+}
+
+svg {
+    color: #3A3D81;
+}
