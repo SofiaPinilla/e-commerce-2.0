@@ -23,12 +23,12 @@ class ProductController extends Controller
         $limit =$products->take(8);
         return response($limit, 201);
     }
-    public function getByPrice()
+    public function getByPriceAsc()
     {
         $products = Product::orderBy('price', 'ASC')->get();
         return response($products, 201);
     }
-    public function getByPrice2()
+    public function getByPriceDesc()
     {
         $products = Product::orderBy('price', 'DESC')->get();
         return response($products, 201);

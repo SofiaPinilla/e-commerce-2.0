@@ -38,6 +38,7 @@
     .subheaders {
         display: flex;
         justify-content: space-between;
+        width: 70vw;
     }
     .subheaders div {
         border: 1px solid black;
@@ -126,63 +127,39 @@
         </div>
     </div>
     <div class="subheaders" style="display: flex;">
-        <div class="num_pedido">
-            <h5>Nº PEDIDO</h5>
-            <span>{{ $order->id }}</span>
+        <div class="num_pedido" style="margin: 0.5rem;">
+            <h5>Nº PEDIDO <span>{{ $order->id }}</span></h5>
+            
         </div>
-        <div class="fecha">
-            <h5>FECHA</h5>
-            <span>{{ $order->created_at }}</span>
-
-        </div>
-        <div class="codigo_cliente">
-            <h5>A NOMBRE DE:</h5>
-            <span>{{ $order->user->name }}</span>
+        <div class="fecha" style="margin: 0.5rem;">
+            <h5>FECHA <span>{{ $order->created_at }}</span></h5>
+            
 
         </div>
-    </div>
-    <div class="cuerpoTitulo" style="
-        flex: 1;
-        text-align: center;">
-        <div class="codigo">CÓDIGO</div>
+        <div class="codigo_cliente" style="margin: 0.5rem;">
+            <h5>A NOMBRE DE:  <span>{{ $order->user->name }}</span></h5>
+           
 
-        <div class="descripcion" style="
-        flex: 1;
-        text-align: center;">NOMBRE</div>
-        <div class="descripcion" style="
-        flex: 1;
-        text-align: center;">DESCRIPCIÓN</div>
-
-        <div class="price" style="
-        width: 6rem;
-        text-align: center;">PRECIO</div>
-        <div class="ean" style="
-        width: 6rem;
-        text-align: center;">EAN</div>
-        <div class="cantidad" style="
-        width: 6rem;
-        text-align: center;">CANT.</div>
-
+        </div>
     </div>
     <div class="cuerpo" style=" margin: 0.5rem 0;
         border: 1px solid black;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;">
         @foreach ($order->products as $product)
-        <div class="producto" style="display: flex;justify-content:space-between;padding: 0.5rem;">
-            <div class="cod_prod" styel="
-        width: 6rem;
-        text-align: center;">{{$product->id}}</div>
+        <div class="producto" style="display: flex;justify-content:space-between;padding: 0.5rem; margin: 0.5rem;">
+        
             <div class="nombre" style="
         width: 6rem;
         text-align: center;">{{$product->name}}</div>
             <div class="formato" style="
         width: 6rem;
-        text-align: center;">{{$product->description}}</div>
+        text-align: center;">{{$product->price}} €</div>
             <div class="cantidad" style="
         width: 6rem;
-        text-align: center;">{{$product->pivot->units}}</div>
+        text-align: center;">{{$product->pivot->units}} units</div>
         </div>
+      
         @endforeach
     </div>
 </body>

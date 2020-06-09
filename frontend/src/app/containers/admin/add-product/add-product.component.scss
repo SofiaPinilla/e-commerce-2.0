@@ -1,14 +1,11 @@
 .container {
     display: flex;
-    justify-content: center;
-    padding: 1em;
+    justify-content: space-between;
+    padding: 5em;
     margin: 0.5em;
 }
 
 .prevPhoto {
-    padding: 1em;
-    display: flex;
-    justify-content: center;
     img {
         width: 50%;
     }

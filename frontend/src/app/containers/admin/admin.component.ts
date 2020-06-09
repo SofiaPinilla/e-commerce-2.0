@@ -9,18 +9,21 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 export class AdminComponent implements OnInit {
   showModal: boolean = false;
   public message: string;
-  public messageUpdated:string;
+  public p;
+  public messageUpdated: string;
   @Output()
   onClose = new EventEmitter();
   currentProduct: object;
   constructor(public productService: ProductService) { }
   ngOnInit(): void {
+    this.getAllProducts();
+  }
+  getAllProducts() {
     this.productService.getAll()
       .subscribe(res => {
         this.productService.products = res
       })
   }
-  
   editProduct(productForm) { // comentar
     const product = productForm.value
     this.productService.editProduct(product, this.currentProduct['id'])
@@ -31,29 +34,23 @@ export class AdminComponent implements OnInit {
         }
         this.messageUpdated = 'product succesfully updated';
         setTimeout(() => this.messageUpdated = "", 2500);
-        this.productService.getAll()
-          .subscribe(res => {
-            this.productService.products = res
-          })
+        this.getAllProducts();
         err => console.error(err);
       })
+    this.showModal = false;
   }
   selectItem(product) {
     this.showModal = true;
     this.currentProduct = product;
   }
-  cancel() { this.onClose.emit(null); }
+  cancel() { this.showModal = false; }
 
   deleteProduct(productId) {
     this.productService.delete(productId)
       .subscribe(res => {
         this.message = 'product succesfully  deleted';
         setTimeout(() => this.message = "", 2500);
-        this.productService.getAll()
-        .subscribe(res => {
-          this.productService.products = res
-        })
-       
+        this.getAllProducts();
       },
         error => {
           console.log(error);
@@ -61,14 +58,17 @@ export class AdminComponent implements OnInit {
       )
   }
   search(event) {
-   
+    if (!event.target.value) {
+      return this.getAllProducts();
+    }
     this.productService.searchProduct(event.target.value)
-    .subscribe(
-      (res: HttpResponse<any>)  =>{
-        this.productService.products = res
-      } ,
-      
-      (error: HttpErrorResponse) => console.error(error)
+      .subscribe(
+        (res: HttpResponse<any>) => {
+          this.productService.products = res
+          console.log(res['length']);
+        },
+
+        (error: HttpErrorResponse) => console.error(error)
       );
-}
+  }
 }

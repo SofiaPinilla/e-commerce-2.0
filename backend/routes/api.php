@@ -33,8 +33,8 @@ Route::prefix('users')->group(function () {
 Route::prefix('products')->group(function () {
     Route::get('/', 'ProductController@getAll');
     Route::get('/8', 'ProductController@getLimitProducts');
-    Route::get('/price', 'ProductController@getByPrice');
-    Route::get('/price2', 'ProductController@getByPrice2');
+    Route::get('/price', 'ProductController@getByPriceAsc');
+    Route::get('/price2', 'ProductController@getByPriceDesc');
     Route::get('/id/{id}', 'ProductController@getById');
     Route::get('/name/{search}', 'ProductController@getProductByName');
     Route::post('/', 'ProductController@insert');

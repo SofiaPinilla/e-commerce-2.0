@@ -22,10 +22,10 @@ export class ProductService {
   getLimitProduct(): Observable<any> {
     return this.httpClient.get('http://localhost:8000/api/products/8');
   }
-  getByPrice(): Observable<any> {
+  getByPriceAsc(): Observable<any> {
     return this.httpClient.get('http://localhost:8000/api/products/price');
   }
-  getByPrice2(): Observable<any> {
+  getByPriceDesc(): Observable<any> {
     return this.httpClient.get('http://localhost:8000/api/products/price2');
   }
   searchProduct(search: string): Observable<any> {

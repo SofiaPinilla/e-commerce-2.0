@@ -14,7 +14,6 @@
                 <p class="deseos"><i class="fas fa-heart"></i> Wish list: {{productService.product?.likes.length}} </p>
 
             </div>
-            <!-- <button class="button is-danger" on-click="unLike()">  <i class="fas fa-heart"></i>  Delete from Wish List</button> -->
             <div class="botones">
                 <button class="button is-info" on-click="addCart(productService.product)">  <i class="fas fa-shopping-cart"></i>  Add to cart</button>
                 <button *ngIf="!productService.product?.likes?.map(mapLikeToIds)?.includes(userService.user['id'])" class="button is-danger" on-click="addLike()">  <i class="fas fa-heart"></i>  Add to wish list</button>

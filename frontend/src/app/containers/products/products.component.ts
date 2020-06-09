@@ -23,14 +23,14 @@ export class ProductsComponent implements OnInit {
         this.productService.products = res
       })
   }
-  getByPrice() {
-    this.productService.getByPrice()
+  getByPriceAsc() {
+    this.productService.getByPriceAsc()
       .subscribe(res => {
         this.productService.products = res
       })
   }
-  getByPrice2() {
-    this.productService.getByPrice2()
+  getByPriceDesc() {
+    this.productService.getByPriceDesc()
       .subscribe(res => {
         this.productService.products = res
       })

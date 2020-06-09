@@ -31,7 +31,7 @@
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input name="password" class="input" type="password" placeholder="Text input" required ngModel>
+                    <input name="password" class="input" type="password" placeholder="Text input" required ngModel pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,40}$">
                     <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                   </span>
