@@ -21,13 +21,21 @@ export class HeaderComponent implements OnInit {
         this.userService.user = res
     }))
   }
+  getAllProducts() {
+    this.productService.getAll()
+      .subscribe(res => {
+        this.productService.products = res
+      })
+  }
   logout(){
     this.userService.setUser(undefined);
     localStorage.removeItem('authToken');
     this.route.navigate([''])
   }
   search(event) {
-   
+    if (!event.target.value) {
+      return this.getAllProducts();
+    }
       this.productService.searchProduct(event.target.value)
       .subscribe(
         (res: HttpResponse<any>)  =>{
