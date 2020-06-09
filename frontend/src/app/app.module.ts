@@ -21,7 +21,8 @@ import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { ContactComponent } from './containers/contact/contact.component';
 import { AboutComponent } from './containers/about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { AddProductComponent } from './containers/admin/add-product/add-product.component'; 
+import { AddProductComponent } from './containers/admin/add-product/add-product.component';
+import { BuyEndComponent } from './containers/buy-end/buy-end.component'; 
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AddProductComponent } from './containers/admin/add-product/add-product.
     NotFoundComponent,
     ContactComponent,
     AboutComponent,
-    AddProductComponent
+    AddProductComponent,
+    BuyEndComponent
   ],
   imports: [
     BrowserModule,

@@ -33,9 +33,12 @@ export class CartComponent implements OnInit {
     }
     this.orderService.insert(token, order)
       .subscribe(res => 
-        setTimeout(() => {
-          this.router.navigate([''])
-        }, 2500));
+       
+          this.router.navigate(['buyEnd'])
+          );
+            setTimeout(() => {
+              this.router.navigate([''])
+            }, 10000);
         error => console.error(error);
     localStorage.removeItem('cart');
     this.cartService.productsInCart = [];

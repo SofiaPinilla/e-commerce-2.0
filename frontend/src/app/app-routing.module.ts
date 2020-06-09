@@ -17,6 +17,7 @@ import { AboutComponent } from './containers/about/about.component';
 import { AddProductComponent } from './containers/admin/add-product/add-product.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { BuyEndComponent } from './containers/buy-end/buy-end.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
   {path: 'addProduct', component: AddProductComponent, canActivate:[AuthGuard]},
+  {path: 'buyEnd', component: BuyEndComponent, canActivate:[AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 
