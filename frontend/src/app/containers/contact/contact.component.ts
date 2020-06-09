@@ -8,21 +8,20 @@ import { ContactService } from 'src/app/services/contact.service';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-
+public message:string;
   constructor(public contactService: ContactService) { }
 
   ngOnInit(): void {
   }
   contact(contactForm:NgForm){
-    console.log('hola')
     if(!contactForm.valid) return;
     const formulario=contactForm.value;
+    this.message= "Thank you for contacting us";
+    setTimeout(() => this.message="", 2500)
     this.contactService.contact(formulario)
     .subscribe(
       res=>{
-        console.log(res);
-        // this.message=res.message;
-        // setTimeout(() => this.message="", 2500)
+        console.log('res');
       },
       err=>console.error(err)
     )

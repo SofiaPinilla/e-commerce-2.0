@@ -56,6 +56,7 @@ export class ProductComponent implements OnInit {
         this.productService.review = {
           review: ''
         }
+        this.imgSrc = '';
         this.productService.getProductId(id)
       .subscribe(product => {
         this.productService.product = product
@@ -64,6 +65,7 @@ export class ProductComponent implements OnInit {
         err => console.error(err);
       })
       reviewForm.reset();
+      imageInput.reset()
   }
   addLike() {
     const id = this.route.snapshot.params.id;

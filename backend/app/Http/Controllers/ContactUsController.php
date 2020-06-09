@@ -23,7 +23,7 @@ class ContactUsController extends Controller
             'user_message' => $request->get('message')
          ), function($message)
         {
-        $message->to('tecnoshop@gmail.com', 'TecnoShop')
+        $message->to('btabeyondthearmy@gmail.com', 'TecnoShop')
         ->subject('Contact from TecnoShop');
        });
        

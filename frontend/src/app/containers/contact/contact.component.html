@@ -36,5 +36,8 @@
                 <button class="button is-link" type="submit">Contact</button>
             </div>
         </div>
+        <div class="notification is-link is-light" *ngIf="message">
+            {{message}}
+        </div>
     </form>
 </div>

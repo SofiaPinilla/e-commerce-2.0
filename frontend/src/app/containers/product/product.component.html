@@ -55,11 +55,12 @@
 
         <div class="reviews" *ngFor="let review of productService.product?.review.reverse()">
             <div class="flex">
-                <p>{{review.user.name}}</p>
                 <div>
 
+                    <th>{{review.user.name}}</th>
+
+                    <p> {{review.created_at | date }}</p>
                 </div>
-                <p> {{review.created_at | date }}</p>
                 <p>{{review.review}}</p>
             </div>
 
