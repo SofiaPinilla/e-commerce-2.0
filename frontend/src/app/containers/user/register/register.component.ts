@@ -10,14 +10,21 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 public message:string
+public errorMsg:string
   constructor(public userService:UserService,public router:Router) { }
 
   ngOnInit(): void {
   }
 
   register(registerForm:NgForm){
-    console.log('hola')
-    if(!registerForm.valid) return;
+    if (!registerForm.controls.email.valid) {
+      return this.errorMsg='This mail already exists', setTimeout(() => this.errorMsg="", 5000);  
+    }
+    if (!registerForm.controls.password.valid) {
+      return this.errorMsg='Your password must contain at least a lowercase letter, a uppercase letter, a number, and must be between 8 and 40 characters', setTimeout(() => this.errorMsg="", 5000);
+     
+    }
+    // if(!registerForm.valid) return;
     const user=registerForm.value;
     this.userService.signup(user)
     .subscribe(

@@ -44,6 +44,7 @@ Route::prefix('products')->group(function () {
     });
     Route::middleware(['auth:api','checkRole:admin'])->group(function (){
       Route::post('/', 'ProductController@insert');
+      Route::post('/image/{id}','ProductController@uploadImage');
       Route::put('/{id}', 'ProductController@update');
         Route::delete('/{id}', 'ProductController@delete');
       });

@@ -16,21 +16,43 @@
             <a class="is-active">All Products</a>
             <a [routerLink]="['/addProduct']">Create Product</a>
         </p>
-        <div class="notification is-danger is-light" *ngIf="message">
-            {{message}}
-        </div>
         <div class="paginacion">
 
             <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
+        <div class="notification is-danger is-light" *ngIf="message">
+            {{message}}
+        </div>
+        <div class="notification is-success is-light" *ngIf="messageUpdated">
+            {{messageUpdated}}
+        </div>
         <a class="panel-block" *ngFor="let product of productService.products | paginate: { itemsPerPage: 5, currentPage: p }">
-            <div class="notification is-success is-light" *ngIf="message">
-                {{messageUpdated}}
-            </div>
             <img src="http://localhost:8000/images/products/{{product.image_path}}" alt="Placeholder image" routerLink="/product/{{product['id']}}">
 
             <span class="panel-icon">{{product.name}}
             </span>
+
+
+            <div>
+                <form class="uploadPhoto" #productPhotoForm="ngForm" (submit)="editProductPhoto(imageInput,product.id)">
+                    <div class="file">
+                        <label class="file-label">
+                          <input class="file-input" type="file" name="resume" name="image" (change)="readURL($event)" ngModel #imageInput type="file" required>
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              Choose a file…
+                            </span>
+                          </span>
+                        </label>
+                    </div>
+                    <!-- <img [src]="imgSrc" alt=""> -->
+                    <button class="desaparecer" type="submit" (click)="selectItem(product)"><i  class="fas fa-camera"></i></button>
+
+                </form>
+            </div>
             <div>
                 <button class="desaparecer" (click)="selectItem(product)"><i  class="fas fa-edit"></i></button>
                 <button class="desaparecer" (click)="deleteProduct(product.id)"> <i  class="fas fa-trash"></i></button>
@@ -78,7 +100,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div class="file">

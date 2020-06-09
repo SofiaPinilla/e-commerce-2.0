@@ -8,6 +8,9 @@
             <div class="notification is-link is-light" *ngIf="message">
                 {{message}}
             </div>
+            <div class="notification is-danger is-light" *ngIf="errorMsg">
+                {{errorMsg}}
+            </div>
             <div class="field">
                 <label class="label">Name</label>
                 <div class="control has-icons-left has-icons-right">
@@ -21,7 +24,7 @@
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input name="email" class="input" type="text" placeholder="Text input" required email ngModel>
+                    <input name="email" class="input" type="text" placeholder="Text input" required ngModel>
                     <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>

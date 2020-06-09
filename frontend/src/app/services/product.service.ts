@@ -50,6 +50,13 @@ export class ProductService {
       }
     });
   }
+  editProductPhoto(product: FormData,id): Observable<any> {
+    return this.httpClient.post(`http://localhost:8000/api/products/image/${id}`, product, {
+      headers: {
+        authorization: 'Bearer '+ localStorage.getItem('authToken') || ''
+      }
+    });
+  }
   addLike( id:any): Observable<any> {
     return this.httpClient.post(`http://localhost:8000/api/products/likes/${id}`,{}, {
       headers: {

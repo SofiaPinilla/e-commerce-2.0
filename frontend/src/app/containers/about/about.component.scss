@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65vh;
+}
+
+.bd-example {
+    margin: 1em;
+    padding: 2em;
+    p {
+        font-size: 1.3em;
+    }
+}
+
+.imagen {
+    align-items: flex-end;
+    margin: 1em;
+    border-radius: 1em;
+    height: 50vh;
+    img {
+        border-radius: 1em;
+    }
+}

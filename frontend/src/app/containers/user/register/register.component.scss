@@ -12,5 +12,7 @@
         margin: 1em;
         padding: 5em;
     }
-    min-height: 70vh;
+    .notification {
+        max-width: 25vw;
+    }
 }

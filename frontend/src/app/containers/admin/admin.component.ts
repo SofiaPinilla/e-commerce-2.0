@@ -11,6 +11,7 @@ export class AdminComponent implements OnInit {
   public message: string;
   public p;
   public messageUpdated: string;
+  imgSrc:string |ArrayBuffer;
   @Output()
   onClose = new EventEmitter();
   currentProduct: object;
@@ -24,6 +25,16 @@ export class AdminComponent implements OnInit {
         this.productService.products = res
       })
   }
+  readURL(event: any): void {
+    if (event.target?.files[0]) {
+        const file = event.target.files[0]; 
+
+        const reader = new FileReader();
+        reader.onload = e => this.imgSrc = reader.result;
+
+        reader.readAsDataURL(file);
+    }
+}
   editProduct(productForm) { // comentar
     const product = productForm.value
     this.productService.editProduct(product, this.currentProduct['id'])
@@ -32,6 +43,19 @@ export class AdminComponent implements OnInit {
         this.productService.product = {
           product: ''
         }
+        this.messageUpdated = 'product succesfully updated';
+        setTimeout(() => this.messageUpdated = "", 2500);
+        this.getAllProducts();
+        err => console.error(err);
+      })
+    this.showModal = false;
+  }
+  editProductPhoto(imageInput,productId) {
+    const productPhotoFormData = new FormData();
+    if (imageInput.files[0]) productPhotoFormData.set('img', imageInput.files[0]);
+    this.productService.editProductPhoto(productPhotoFormData,productId)
+      .subscribe(res => {
+        this.productService.setProduct(this.productService.product)
         this.messageUpdated = 'product succesfully updated';
         setTimeout(() => this.messageUpdated = "", 2500);
         this.getAllProducts();
