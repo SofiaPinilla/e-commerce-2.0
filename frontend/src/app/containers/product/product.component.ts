@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
@@ -14,16 +14,20 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProductComponent implements OnInit {
   inputValue: string | null;
-  textValue
   imgSrc:string |ArrayBuffer;
   constructor(public productService:ProductService,public userService: UserService, public route: ActivatedRoute, public location: Location,public cartService: CartService) { }
 
   ngOnInit(): void {
+   
+    this.getProductId()
+  }
+ 
+  getProductId(){
     const id = this.route.snapshot.params.id
     this.productService.getProductId(id)
-      .subscribe(product => {
-        this.productService.product = product
-      })
+    .subscribe((product: HttpResponse<any>)  => {
+      this.productService.product = product
+    },(error: HttpErrorResponse) => console.error(error))
   }
   readURL(event: any): void {
     if (event.target?.files[0]) {
@@ -49,7 +53,6 @@ export class ProductComponent implements OnInit {
     this.productService.postReview(reviewFormData, id)
       .subscribe((res: HttpResponse<any>) => {
         imageInput.value = '';
-        this.textValue = '';
         this.productService.setReview(this.productService.review)
         this.productService.setProduct(this.productService.product)
         imageInput.value = '';
@@ -57,13 +60,8 @@ export class ProductComponent implements OnInit {
           review: ''
         }
         this.imgSrc = '';
-        this.productService.getProductId(id)
-      .subscribe(product => {
-        this.productService.product = product
-      })
-
-        err => console.error(err);
-      })
+        this.getProductId()
+      },(error: HttpErrorResponse) => console.error(error))
       reviewForm.reset();
       imageInput.reset()
   }
@@ -71,14 +69,11 @@ export class ProductComponent implements OnInit {
     const id = this.route.snapshot.params.id;
     this.productService.addLike(id)
       .subscribe(
-        res => {
+        (res: HttpResponse<any>)  => {
           this.productService.product = res
-          this.productService.getProductId(id)
-          .subscribe(product => {
-            this.productService.product = product
-          })
+          this.getProductId()
         },
-        error => console.error(error)
+        (error: HttpErrorResponse) => console.error(error)
       )
 
   }
@@ -89,14 +84,10 @@ export class ProductComponent implements OnInit {
     const id = this.route.snapshot.params.id;
     this.productService.deleteLike(id)
       .subscribe(
-        res => {
+        (res: HttpResponse<any>)  => {
           this.productService.product = res
-          this.productService.getProductId(id)
-          .subscribe(product => {
-            this.productService.product = product
-          })
-        },
-        error => console.error(error)
+          this.getProductId()
+        },(error: HttpErrorResponse) => console.error(error)
       )
 
   }

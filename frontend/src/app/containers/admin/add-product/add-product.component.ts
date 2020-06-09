@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-product',
@@ -16,10 +16,8 @@ imgSrc:string |ArrayBuffer;
   readURL(event: any): void {
     if (event.target?.files[0]) {
         const file = event.target.files[0]; 
-
         const reader = new FileReader();
         reader.onload = e => this.imgSrc = reader.result;
-
         reader.readAsDataURL(file);
     }
 }
@@ -45,9 +43,7 @@ imgSrc:string |ArrayBuffer;
           .subscribe(res => {
             this.productService.products = res
           })
-
-        err => console.error(err);
-      })
+      },(error: HttpErrorResponse) => console.error(error))
       productForm.reset();
   }
 }

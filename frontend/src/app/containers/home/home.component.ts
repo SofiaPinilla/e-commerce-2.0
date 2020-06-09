@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
           (res: HttpResponse<any>)  =>{
             this.productService.products2 = res
           } ,
-            
           (error: HttpErrorResponse) => console.error(error)
         );
     }

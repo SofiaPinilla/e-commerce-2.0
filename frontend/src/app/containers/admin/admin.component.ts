@@ -21,9 +21,9 @@ export class AdminComponent implements OnInit {
   }
   getAllProducts() {
     this.productService.getAll()
-      .subscribe(res => {
+      .subscribe((res: HttpResponse<any>)  => {
         this.productService.products = res
-      })
+      },(error: HttpErrorResponse) => console.error(error))
   }
   readURL(event: any): void {
     if (event.target?.files[0]) {
@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
   editProduct(productForm) { // comentar
     const product = productForm.value
     this.productService.editProduct(product, this.currentProduct['id'])
-      .subscribe(res => {
+      .subscribe((res: HttpResponse<any>)  => {
         this.productService.setProduct(this.productService.product)
         this.productService.product = {
           product: ''
@@ -47,20 +47,20 @@ export class AdminComponent implements OnInit {
         setTimeout(() => this.messageUpdated = "", 2500);
         this.getAllProducts();
         err => console.error(err);
-      })
+      },(error: HttpErrorResponse) => console.error(error))
     this.showModal = false;
   }
   editProductPhoto(imageInput,productId) {
     const productPhotoFormData = new FormData();
     if (imageInput.files[0]) productPhotoFormData.set('img', imageInput.files[0]);
     this.productService.editProductPhoto(productPhotoFormData,productId)
-      .subscribe(res => {
+      .subscribe((res: HttpResponse<any>)  => {
         this.productService.setProduct(this.productService.product)
         this.messageUpdated = 'product succesfully updated';
         setTimeout(() => this.messageUpdated = "", 2500);
         this.getAllProducts();
         err => console.error(err);
-      })
+      },(error: HttpErrorResponse) => console.error(error))
     this.showModal = false;
   }
   selectItem(product) {
@@ -71,14 +71,11 @@ export class AdminComponent implements OnInit {
 
   deleteProduct(productId) {
     this.productService.delete(productId)
-      .subscribe(res => {
+      .subscribe((res: HttpResponse<any>)  => {
         this.message = 'product succesfully  deleted';
         setTimeout(() => this.message = "", 2500);
         this.getAllProducts();
-      },
-        error => {
-          console.log(error);
-        }
+      },(error: HttpErrorResponse) => console.error(error)
       )
   }
   search(event) {

@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cart',
@@ -32,9 +33,8 @@ export class CartComponent implements OnInit {
       products: this.mapCartProducts(this.cartService.productsInCart)
     }
     this.orderService.insert(token, order)
-      .subscribe(res => 
-       
-          this.router.navigate(['buyEnd'])
+      .subscribe((res: HttpResponse<any>)  => 
+        this.router.navigate(['buyEnd'])
           );
             setTimeout(() => {
               this.router.navigate([''])

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { NgForm } from '@angular/forms';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -28,15 +29,14 @@ public errorMsg:string
     const user=registerForm.value;
     this.userService.signup(user)
     .subscribe(
-      res=>{
+      (res: HttpResponse<any>) =>{
         console.log(res);
         this.message= "Successfully registered";
         setTimeout(() => this.message="", 2500);
         setTimeout(() => {
           this.router.navigate(['login'])
         }, 2500);
-      },
-      err=>console.error(err)
+      },(error: HttpErrorResponse) => console.error(error)
     )
     registerForm.reset();
   }

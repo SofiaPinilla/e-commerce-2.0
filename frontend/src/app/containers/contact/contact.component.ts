@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ContactService } from 'src/app/services/contact.service';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -20,10 +21,9 @@ public message:string;
     setTimeout(() => this.message="", 2500)
     this.contactService.contact(formulario)
     .subscribe(
-      res=>{
+      (res: HttpResponse<any>) =>{
         console.log('res');
-      },
-      err=>console.error(err)
+      },(error: HttpErrorResponse) => console.error(error)
     )
     contactForm.reset();
   }
