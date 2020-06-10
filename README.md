@@ -24,7 +24,7 @@ Vista products:
 
 ![foto](frontend/src/assets/images/foto3.PNG) 
 
-Aquí puedes buscar productos en tiempo real y filtar por precio o por categoria.
+Aquí puedes buscar productos en tiempo real y filtrar por precio o por categoria.
 
 ![foto](frontend/src/assets/images/busquedayfiltros.gif) 
  
