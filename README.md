@@ -1,4 +1,4 @@
-# e-commerce-2.0
+# TecnoShop e-commerce
 Este proyecto es un e-commerce, donde se puede ver los productos y buscar los que desemos en tiempo real, ordenarlos por precio o por
 categoria, añadirlos al carrito o a nuestra lista de deseos y comentar sobre cualquier producto. 
 Cuenta con una vista de admin, donde se pueden buscar los productos existentes, editarlos, borrarlos, o crear uno nuevo.
@@ -29,7 +29,7 @@ Aquí puedes buscar productos en tiempo real y filtar por precio o por categoria
  
  En el detalle del producto, podemos ver su información mas detallada, añadirlo al carrito o a nuestra lista de deseos  y comentar.
  
- ![foto](frontend/src/assets/images/detail.PNG) 
+ ![foto](frontend/src/assets/images/detail.gif) 
  
  Aquí accedemos al carrito donde podemos seleccionar la cantidad deseada, eliminar el producto que no queremos y finalizar la compra.
  
@@ -59,7 +59,7 @@ Página 404:
 ![foto](frontend/src/assets/images/notfound.PNG) 
 
 Vista de contacto:
-![foto](frontend/src/assets/images/contact.PNG) 
+![foto](frontend/src/assets/images/contact.gif) 
 
 Vista de about:
 ![foto](frontend/src/assets/images/foto4.PNG) 
@@ -80,7 +80,7 @@ Para que la aplicación funciona debes tener instalado Angular y PHP Laravel.
 ```
 npm install -g @angular/cli
 ```
-Para poder utilizar Laravel debes tener composer instalada si aún no lo tienes lo puedes descargar [aquí](https://getcomposer.org/download/)
+Para poder utilizar Laravel debes tener composer instalado si aún no lo tienes lo puedes descargar [aquí](https://getcomposer.org/download/)
 ```
 composer global require "laravel/installer"
 ```
