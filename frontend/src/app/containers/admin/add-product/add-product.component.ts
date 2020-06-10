@@ -37,6 +37,7 @@ imgSrc:string |ArrayBuffer;
         this.productService.product = {
           product: ''
         }
+        this.imgSrc = '';
         this.message = 'product succesfully created';
         setTimeout(() => this.message = "", 2500);
         this.productService.getAll()
