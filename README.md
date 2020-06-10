@@ -32,7 +32,8 @@ Aquí puedes buscar productos en tiempo real y filtar por precio o por categoria
  
  ![foto](frontend/src/assets/images/detail.gif) 
  
- Aquí accedemos al carrito donde podemos seleccionar la cantidad deseada, eliminar el producto que no queremos y finalizar la compra.
+Aquí accedemos al carrito donde podemos seleccionar la cantidad del producto deseada y eliminar el producto que no queremos. Además cuando finalicemos la compra nos redirigirá a una vista de agradecimiento por su compra y recibiremos un correo con los detalles
+de nuestro pedido.
  
  ![foto](frontend/src/assets/images/carrito.gif) 
  
@@ -59,7 +60,7 @@ Página 404:
 
 ![foto](frontend/src/assets/images/notfound.PNG) 
 
-Vista de contacto:
+Vista de contacto, donde podemos rellenar un formulario y contactar con atención al cliente:
 ![foto](frontend/src/assets/images/contact.gif) 
 
 Vista de about:
@@ -72,6 +73,9 @@ Vista de login:
 ![foto](frontend/src/assets/images/login.PNG) 
 
 Guards:
+TecnoShop cuenta con dos guards, uno para el usuario normal el cual si no estas conectado no te permitira acceder a ciertas vistas, como
+por ejemplo la de perfil. Y cuenta con otro guard el cual protege la vista de admin para que solo pueda acceder a ella el administrador.
+
 ![foto](frontend/src/assets/images/guards.gif) 
 
 ### Pre-requisitos 📋
