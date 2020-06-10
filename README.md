@@ -1,4 +1,5 @@
 # TecnoShop e-commerce
+
 Este proyecto es un e-commerce, donde se puede ver los productos y buscar los que desemos en tiempo real, ordenarlos por precio o por
 categoria, añadirlos al carrito o a nuestra lista de deseos y comentar sobre cualquier producto. 
 Cuenta con una vista de admin, donde se pueden buscar los productos existentes, editarlos, borrarlos, o crear uno nuevo.
@@ -75,7 +76,7 @@ Guards:
 
 ### Pre-requisitos 📋
 
-Para que la aplicación funciona debes tener instalado Angular y PHP Laravel.
+Para que la aplicación funcione debes tener instalado Angular y PHP Laravel.
 
 ```
 npm install -g @angular/cli
