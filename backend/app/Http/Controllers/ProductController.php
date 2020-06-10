@@ -35,7 +35,7 @@ class ProductController extends Controller
     }
     public function getById( $id)
     {
-        $product = Product::with('review.user','likes')->find($id);
+        $product = Product::with('review.user','likes','category')->find($id);
         return response($product, 201);
     }
     public function insert(Request $request)

@@ -8,9 +8,9 @@
         <div class="datosProducto">
             <div>
                 <h1>{{productService.product?.name}}</h1>
-                <p>Description: {{productService.product?.description}}</p>
-                <p>Price: {{productService.product?.price}} €</p>
-                <p>Category: {{productService.product?.name}} </p>
+                <th>Price: {{productService.product?.price}} €</th>
+                <p class="desc">Description: {{productService.product?.description}}</p>
+                <p>Category: {{productService.product?.category.name}} </p>
                 <p class="deseos"><i class="fas fa-heart"></i> Wish list: {{productService.product?.likes.length}} </p>
 
             </div>
