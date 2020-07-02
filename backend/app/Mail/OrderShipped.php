@@ -12,8 +12,7 @@ class OrderShipped extends Mailable
     use Queueable, SerializesModels;
     public $order;
     /**
-     * Create a new message instance.
-     *
+     
      * @return void
      */
     public function __construct($order)
@@ -22,8 +21,7 @@ class OrderShipped extends Mailable
     }
 
     /**
-     * Build the message.
-     *
+    
      * @return $this
      */
     public function build()

@@ -20,8 +20,8 @@ class ReviewController extends Controller
                 'review' => 'required|string'
             ]);
             if($request->has('img')){
-                $imageName = time() . '-' . request()->img->getClientOriginalName(); //time() es como Date.now()
-                request()->img->move('images/products', $imageName); //mueve el archivo subido al directorio indicado (en este caso public path es dentro de la carpeta public)
+                $imageName = time() . '-' . request()->img->getClientOriginalName();
+                request()->img->move('images/products', $imageName); 
                 $body['image_path'] = $imageName;    
             }
             $body['product_id'] = $id;

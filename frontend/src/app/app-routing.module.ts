@@ -16,7 +16,7 @@ import { ContactComponent } from './containers/contact/contact.component';
 import { AboutComponent } from './containers/about/about.component';
 import { AddProductComponent } from './containers/admin/add-product/add-product.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AdminGuard } from './guards/admin.guard';
+// import { AdminGuard } from './guards/admin.guard';
 import { BuyEndComponent } from './containers/buy-end/buy-end.component';
 
 
@@ -30,7 +30,7 @@ const routes: Routes = [
   {path:'cart', component: CartComponent, canActivate:[AuthGuard]},
   {path:'myorders', component: OrdersComponent, canActivate:[AuthGuard]},
   {path:'wishlist', component: WishListComponent, canActivate:[AuthGuard]},
-  {path:'admin', component: AdminComponent, canActivate:[AdminGuard,AuthGuard]},
+  {path:'admin', component: AdminComponent, canActivate:[AuthGuard]},
   {path: 'search/:search', component: SearchComponent, canActivate:[AuthGuard]},
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},

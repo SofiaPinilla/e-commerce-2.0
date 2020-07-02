@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
         reader.readAsDataURL(file);
     }
 }
-  editProduct(productForm) { // comentar
+  editProduct(productForm) { 
     const product = productForm.value
     this.productService.editProduct(product, this.currentProduct['id'])
       .subscribe((res: HttpResponse<any>)  => {

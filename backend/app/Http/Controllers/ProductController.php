@@ -47,9 +47,9 @@ class ProductController extends Controller
                 'description' => 'required|string',
                 'img' => 'required|image',
                 'category_id'=>'required'
-            ]); //req.body
-            $imageName = time() . '-' . request()->img->getClientOriginalName(); //time() es como Date.now()
-            request()->img->move('images/products', $imageName); //mueve el archivo subido al directorio indicado (en este caso public path es dentro de la carpeta public)
+            ]); 
+            $imageName = time() . '-' . request()->img->getClientOriginalName();
+            request()->img->move('images/products', $imageName); 
             $body['image_path'] = $imageName;
             $product = Product::create($body);
         } catch (\Exception $e) {
@@ -62,11 +62,10 @@ class ProductController extends Controller
     {
         try {
             $request->validate(['img' => 'required|image']);
-            // $request->validate(['imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048']);
-            $product = Product::find($id); //buscamos el producto a actualizar la ruta de la imagen
-            $imageName = time() . '-' . request()->img->getClientOriginalName(); //time() es como Date.now()
-            request()->img->move('images/products', $imageName); //mueve el archivo subido al directorio indicado (en este caso public path es dentro de la carpeta public)
-            $product->update(['image_path' => $imageName]); //actualizamos el image_path con el nuevo nombre de la imagen
+            $product = Product::find($id); 
+            $imageName = time() . '-' . request()->img->getClientOriginalName(); 
+            request()->img->move('images/products', $imageName); 
+            $product->update(['image_path' => $imageName]);
             return response($product);
         } catch (\Exception $e) {
             return response([

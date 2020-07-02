@@ -21,9 +21,9 @@ class UserController extends Controller
         if (!Auth::attempt($credentials)) {
             return response([
                 'message' => 'Wrong Credentials'
-            ], 400); //res.status(400).send({'message' : 'Wrong Credentials'})
+            ], 400); 
         }
-        $user = Auth::user(); //req.user tb podemos utilizar $request->user()
+        $user = Auth::user(); 
         $token = $user->createToken('authToken')->accessToken;
         return response([
             'user' => $user,
@@ -33,14 +33,13 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
-        // DB::table('oauth_access_tokens')->where('revoked',1)->delete();
         return [
             'mensaje' => 'User successfully logged out'
         ];
     }
     public function getUserInfo(Request $request)
     {
-        $user = Auth::user();//req.user
+        $user = Auth::user();
 
         return $user->load('orders.products','likes');
     }

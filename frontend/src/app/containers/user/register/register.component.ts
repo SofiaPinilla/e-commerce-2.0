@@ -25,7 +25,6 @@ public errorMsg:string
       return this.errorMsg='Your password must contain at least a lowercase letter, a uppercase letter, a number, and must be between 8 and 40 characters', setTimeout(() => this.errorMsg="", 5000);
      
     }
-    // if(!registerForm.valid) return;
     const user=registerForm.value;
     this.userService.signup(user)
     .subscribe(

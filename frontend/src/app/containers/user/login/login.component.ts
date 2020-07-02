@@ -32,7 +32,6 @@ public errorMsg:string
           this.userService.setUser(res.user);
           this.userService.setToken(res['token']);
           localStorage.setItem('authToken',res.token);
-          // setTimeout(() => this.message = "", 2500);
           setTimeout(() => {
             this.router.navigate(['profile'])
           }, 2500);
