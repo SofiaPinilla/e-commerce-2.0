@@ -22,6 +22,6 @@
         <p class="productos" *ngFor="let product of order.products">
             {{product.name}} : {{product.price}} € Units:{{product.pivot.units}}
         </p>
-        <th>Total: {{order.products?.reduce(sumTotal,0)}}€</th>
+        <th>Total: {{order.products?.reduce(sumTotal,0).toFixed(2)}}€</th>
     </a>
 </nav>
